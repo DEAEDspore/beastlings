@@ -6,7 +6,7 @@ from telegram.ext import Application, CommandHandler, ContextTypes
 TOKEN = '7745016365:AAEzYu3H7IhUOv0NcdZkIr2qf5eNC6T9JVc'
 
 # Ссылка на сайт (игру)
-SITE_URL = "https://DEAEDspore.github.io/beastlings/web/"  # Актуальная ссылка на сайт
+SITE_URL = "https://deaedspore.github.io/beastlings/"  # Актуальная ссылка на сайт
 
 # Функция для команды /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
