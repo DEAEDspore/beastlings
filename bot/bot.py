@@ -6,13 +6,13 @@ from telegram.ext import Application, CommandHandler, ContextTypes
 TOKEN = '7745016365:AAEzYu3H7IhUOv0NcdZkIr2qf5eNC6T9JVc'
 
 # Ссылка на сайт (игру)
-SITE_URL = "https://deaedspore.github.io/beastlings/"  # Актуальная ссылка на сайт
+SITE_URL = "https://deaedspore.github.io/beastlings/docs/"  # Текущая ссылка на GitHub Pages
 
 # Функция для команды /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     # Создание кнопки с параметром web_app для мини-приложения
     keyboard = [
-        [InlineKeyboardButton("Перейти в игру", web_app={'url': SITE_URL})]  # Используем web_app вместо url
+        [InlineKeyboardButton("Перейти в игру", web_app={'url': SITE_URL})]  # Мини-приложение Telegram
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
