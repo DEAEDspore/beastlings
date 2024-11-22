@@ -1,1 +1,1 @@
-# beastlings
+# beastlings game
