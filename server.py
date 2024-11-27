@@ -39,6 +39,10 @@ def loading_screen():
     # Возвращаем HTML-файл для загрузочного экрана
     return render_template('loading.html')
 
+@app.route('/choose')
+def choose():
+    return render_template('choose.html')
+
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

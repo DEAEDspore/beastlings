@@ -11,6 +11,14 @@
             background-color: #f4f4f9;
             margin: 0;
             padding: 20px;
+            background-image: url("{{ url_for('static', filename='images/loading_bg.png') }}");
+            background-size: cover;  /* Это заставляет картинку покрывать весь экран */
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .game-container {
             max-width: 600px;
@@ -38,6 +46,11 @@
         <div class="result" id="result">Make your choice!</div>
     </div>
     <script>
+        // Перенаправление на страницу выбора через 3 секунды
+        setTimeout(function() {
+            window.location.href = "/choose";  // Перенаправляем на страницу выбора бистлинга
+        }, 3000);  // 3000 миллисекунд = 3 секунды
+        
         async function playGame(choice) {
             const response = await fetch(`/play?choice=${choice}`);
             const data = await response.json();
