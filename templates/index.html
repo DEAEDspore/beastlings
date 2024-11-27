@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beastlings Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .game-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .choices img {
+            width: 100px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .result {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Beastlings Game: Rock, Paper, Scissors</h1>
+        <div class="choices">
+            <img src="https://via.placeholder.com/100?text=Rock" alt="Rock" onclick="playGame('rock')">
+            <img src="https://via.placeholder.com/100?text=Paper" alt="Paper" onclick="playGame('paper')">
+            <img src="https://via.placeholder.com/100?text=Scissors" alt="Scissors" onclick="playGame('scissors')">
+        </div>
+        <div class="result" id="result">Make your choice!</div>
+    </div>
+    <script>
+        async function playGame(choice) {
+            const response = await fetch(`/play?choice=${choice}`);
+            const data = await response.json();
+            document.getElementById('result').innerText = `You chose ${data.player_choice}, 
+                bot chose ${data.bot_choice}. ${data.result}`;
+        }
+    </script>
+</body>
+</html>
