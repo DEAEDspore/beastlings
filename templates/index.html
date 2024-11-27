@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beastlings Game</title>
     <style>
+        /* Стиль для фона */
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #f4f4f9;
             margin: 0;
-            padding: 20px;
-            background-image: url("{{ url_for('static', filename='images/loading_bg.png') }}");
-            background-size: cover;  /* Это заставляет картинку покрывать весь экран */
+            padding: 0;
+            height: 100vh; /* Высота экрана */
+            background-image: url("{{ url_for('static', filename='images/loading_bg.png') }}"); /* Картинка загрузки */
+            background-size: cover; /* Картинка адаптируется под экран */
             background-position: center;
-            height: 100vh;
-            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -46,11 +45,14 @@
         <div class="result" id="result">Make your choice!</div>
     </div>
     <script>
-        // Перенаправление на страницу выбора через 3 секунды
+        // Функция для перехода после загрузки
         setTimeout(function() {
-            window.location.href = "/choose";  // Перенаправляем на страницу выбора бистлинга
-        }, 3000);  // 3000 миллисекунд = 3 секунды
-        
+            // Показываем контейнер игры после загрузки
+            document.body.style.backgroundImage = "none"; // Убираем фон
+            document.getElementById('game-container').style.display = "block"; // Показываем контейнер игры
+            window.location.href = "/choose"; // Перенаправляем на страницу выбора
+        }, 3000); // Задержка 3 секунды (3000 миллисекунд)
+
         async function playGame(choice) {
             const response = await fetch(`/play?choice=${choice}`);
             const data = await response.json();
