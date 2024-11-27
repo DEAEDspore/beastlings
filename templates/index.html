@@ -19,23 +19,48 @@
             justify-content: center;
             align-items: center;
         }
+
+        /* Стиль для контейнера игры */
         .game-container {
             max-width: 600px;
             margin: 0 auto;
+            display: none; /* Скрыто, пока не завершится загрузка */
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .choices img {
             width: 100px;
             cursor: pointer;
             margin: 10px;
         }
+
         .result {
             font-size: 1.5em;
             margin-top: 20px;
         }
+
+        /* Адаптация для мобильных устройств */
+        @media (max-width: 600px) {
+            body {
+                background-position: top;
+            }
+
+            .game-container {
+                max-width: 100%;
+                padding: 10px;
+            }
+
+            .choices img {
+                width: 80px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="game-container">
+    <div class="game-container" id="game-container">
         <h1>Beastlings Game: Rock, Paper, Scissors</h1>
         <div class="choices">
             <img src="https://via.placeholder.com/100?text=Rock" alt="Rock" onclick="playGame('rock')">
@@ -44,15 +69,19 @@
         </div>
         <div class="result" id="result">Make your choice!</div>
     </div>
+
     <script>
         // Функция для перехода после загрузки
         setTimeout(function() {
             // Показываем контейнер игры после загрузки
             document.body.style.backgroundImage = "none"; // Убираем фон
             document.getElementById('game-container').style.display = "block"; // Показываем контейнер игры
-            window.location.href = "/choose"; // Перенаправляем на страницу выбора
+            
+            // Перенаправляем на страницу выбора
+            window.location.href = "/choose"; 
         }, 3000); // Задержка 3 секунды (3000 миллисекунд)
 
+        // Функция для игры
         async function playGame(choice) {
             const response = await fetch(`/play?choice=${choice}`);
             const data = await response.json();
