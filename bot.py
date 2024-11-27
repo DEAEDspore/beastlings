@@ -4,7 +4,7 @@ import logging
 
 # Вставьте ваш токен бота сюда
 TOKEN = "7745016365:AAEzYu3H7IhUOv0NcdZkIr2qf5eNC6T9JVc"
-WEB_APP_URL = "http://localhost:5000"  # URL веб-приложения
+WEB_APP_URL = "https://beastlings-server.herokuapp.com" # URL веб-приложения
 
 # Логирование для отладки
 logging.basicConfig(level=logging.INFO)

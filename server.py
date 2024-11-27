@@ -1,10 +1,10 @@
-from flask import Flask, send_from_directory
+from flask import Flask
 
-app = Flask(__name__, static_folder="public")
+app = Flask(__name__)
 
-@app.route("/")
-def index():
-    return send_from_directory("public", "index.html")
+@app.route('/')
+def home():
+    return "Hello from Beastlings Server!"
 
-if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+if __name__ == '__main__':
+    app.run(debug=True)
