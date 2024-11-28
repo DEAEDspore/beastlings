@@ -8,7 +8,7 @@
     <form action="/save_beastling" method="post">
         {% for beastling in beastlings %}
         <button type="submit" name="beastling" value="{{ beastling }}">
-            <img src="{{ url_for('static', filename='images/beastling' + str(beastling) + '.png') }}" alt="Beastling {{ beastling }}">
+            <img src="{{ url_for('static', filename='images/beastling' + beastling + '.png') }}" alt="Beastling {{ beastling }}">
         </button>
         {% endfor %}
     </form>

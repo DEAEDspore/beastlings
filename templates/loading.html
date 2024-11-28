@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <title>Loading</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('{{ url_for("static", filename="images/loading_background.png") }}') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .loading-text {
+            color: white;
+            font-size: 36px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
 </head>
 <body>
-    <h1>Loading...</h1>
-    <a href="/select_beastling">Start</a>
+    <div class="loading-text">Loading...</div>
+    <script>
+        setTimeout(() => {
+            window.location.href = "/select_beastling";
+        }, 3000);
+    </script>
 </body>
 </html>

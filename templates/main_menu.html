@@ -7,7 +7,7 @@
     <h1>Main Menu</h1>
     <h2>Last Battle: {{ last_battle_result }}</h2>
     <div>
-        <img src="{{ url_for('static', filename='images/beastling' + str(player_beastling) + '.png') }}" alt="Your Beastling">
+        <img src="{{ url_for('static', filename='images/beastling' + player_beastling + '.png') }}" alt="Your Beastling">
     </div>
     <nav>
         <a href="/battle">Battle</a>
