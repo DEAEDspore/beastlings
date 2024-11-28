@@ -1,35 +1,79 @@
-<!-- templates/battle.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Battle</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Beastlings Battle</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff;
+        }
+
+        .battle-arena {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-grow: 1;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .beastling {
+            max-width: 30%;
+            text-align: center;
+        }
+
+        .beastling img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .controls button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 2px solid #000;
+            background-color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .controls button:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
 </head>
 <body>
-    <div class="battle-container">
-        <div class="battle-row">
-            <div class="beastling">
-                <img src="{{ url_for('static', filename='images/beastling' + player_beastling|string + '.png') }}" alt="Your Beastling">
-                <p>Your Beastling</p>
-            </div>
-            <div class="beastling">
-                <img src="{{ url_for('static', filename='images/beastling_bot.png') }}" alt="Bot Beastling">
-                <p>Bot Beastling</p>
-            </div>
+    <div class="battle-arena">
+        <!-- Бистлинг игрока -->
+        <div class="beastling" id="player-beastling">
+            <img src="{{ url_for('static', filename='images/beastling' + player_beastling|string + '.png') }}" alt="Your Beastling">
+            <p>Ваш бистлинг</p>
         </div>
-        <div class="battle-controls">
-            <button onclick="makeMove('rock')">Rock</button>
-            <button onclick="makeMove('paper')">Paper</button>
-            <button onclick="makeMove('scissors')">Scissors</button>
+
+        <!-- Бистлинг бота -->
+        <div class="beastling" id="opponent-beastling">
+            <img src="{{ url_for('static', filename='images/beastling_bot.png') }}" alt="Opponent Beastling">
+            <p>Бистлинг бота</p>
         </div>
     </div>
 
-    <script>
-        function makeMove(choice) {
-            alert(`You chose ${choice}. Battle logic will be implemented here.`);
-        }
-    </script>
+    <div class="controls">
+        <button id="rock">Камень</button>
+        <button id="scissors">Ножницы</button>
+        <button id="paper">Бумага</button>
+    </div>
 </body>
 </html>
