@@ -8,22 +8,48 @@
         body {
             margin: 0;
             padding: 0;
-            height: 100vh; /* Высота экрана */
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             background-image: url("{{ url_for('static', filename='images/loading_bg.png') }}");
-            background-size: cover; /* Картинка адаптируется под экран */
+            background-size: cover; /* Картинка полностью покрывает экран */
             background-position: center;
+        }
+
+        .loading-bar {
+            position: absolute;
+            bottom: 10%;
+            width: 80%;
+            height: 20px;
+            background: #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .loading-bar .progress {
+            width: 0;
+            height: 100%;
+            background: #4caf50;
+            animation: loading 3s linear forwards;
+        }
+
+        @keyframes loading {
+            100% {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="loading-bar">
+        <div class="progress"></div>
+    </div>
     <script>
-        // Через 3 секунды перейти на /choose
-        setTimeout(function() {
+        // Через 3 секунды переход на экран выбора
+        setTimeout(function () {
             window.location.href = "/choose";
-        }, 3000); // 3 секунды
+        }, 3000);
     </script>
 </body>
 </html>

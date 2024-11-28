@@ -3,49 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Выбор Бистлинга</title>
+    <title>Choose Your Beastling</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
+            background: #f0f0f0;
         }
-        .choose-container {
-            text-align: center;
+
+        h1 {
+            font-family: Arial, sans-serif;
+            margin-bottom: 20px;
         }
-        .choose-button {
-            margin: 20px;
-            padding: 15px 30px;
-            font-size: 18px;
+
+        .beastling-choice {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .beastling-choice img {
+            width: 150px;
+            height: 150px;
             cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
+            border: 2px solid transparent;
             border-radius: 10px;
+            transition: border-color 0.3s;
         }
-        .choose-button:hover {
-            background-color: #45a049;
+
+        .beastling-choice img:hover {
+            border-color: #4caf50;
         }
     </style>
 </head>
 <body>
-    <div class="choose-container">
-        <h2>Выберите своего первого бистлинга:</h2>
-        <button class="choose-button" onclick="choose('bistling1')">Бистлинг 1</button>
-        <button class="choose-button" onclick="choose('bistling2')">Бистлинг 2</button>
-        <button class="choose-button" onclick="choose('bistling3')">Бистлинг 3</button>
+    <h1>Choose Your Beastling</h1>
+    <div class="beastling-choice">
+        <img src="{{ url_for('static', filename='images/beastling1.png') }}" alt="Beastling 1" onclick="chooseBeastling(1)">
+        <img src="{{ url_for('static', filename='images/beastling2.png') }}" alt="Beastling 2" onclick="chooseBeastling(2)">
+        <img src="{{ url_for('static', filename='images/beastling3.png') }}" alt="Beastling 3" onclick="chooseBeastling(3)">
     </div>
 
     <script>
-        function choose(bistling) {
-            // Логика выбора бистлинга и перехода к следующему этапу
-            alert("Вы выбрали " + bistling);
-            // Перенаправление на страницу боя
-            window.location.href = "/battle";
+        function chooseBeastling(beastlingId) {
+            alert(`You chose Beastling ${beastlingId}`);
+            // Здесь можно сделать POST-запрос на сервер или перейти на другой экран
         }
     </script>
 </body>
