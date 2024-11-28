@@ -8,8 +8,8 @@
         body {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             align-items: center;
+            justify-content: center;
             height: 100vh;
             margin: 0;
             background-color: #f0f8ff;
@@ -17,16 +17,15 @@
 
         .battle-arena {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            flex-grow: 1;
             width: 100%;
             padding: 20px;
         }
 
         .beastling {
-            max-width: 30%;
             text-align: center;
+            max-width: 30%;
         }
 
         .beastling img {
@@ -34,11 +33,16 @@
             height: auto;
         }
 
+        .vs {
+            max-width: 10%;
+            margin: 0 20px;
+        }
+
         .controls {
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-bottom: 20px;
+            margin-top: 20px;
         }
 
         .controls button {
@@ -62,6 +66,9 @@
             <img src="{{ url_for('static', filename='images/beastling' + player_beastling|string + '.png') }}" alt="Your Beastling">
             <p>Ваш бистлинг</p>
         </div>
+
+        <!-- Изображение "VS" -->
+        <img class="vs" src="{{ url_for('static', filename='images/vs.png') }}" alt="VS">
 
         <!-- Бистлинг бота -->
         <div class="beastling" id="opponent-beastling">
