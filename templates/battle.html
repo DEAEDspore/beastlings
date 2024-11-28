@@ -11,7 +11,7 @@
     <div class="battle-container">
         <div class="battle-row">
             <div class="beastling">
-                <img src="{{ url_for('static', filename=f'images/beastling{player_beastling}.png') }}" alt="Your Beastling">
+                <img src="{{ url_for('static', filename='images/beastling' + player_beastling|string + '.png') }}" alt="Your Beastling">
                 <p>Your Beastling</p>
             </div>
             <div class="beastling">
