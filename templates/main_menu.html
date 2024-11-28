@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Menu</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff;
+        }
+
+        .beastling img {
+            max-width: 50%;
+            height: auto;
+        }
+
+        .nav {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .nav button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 2px solid #000;
+            background-color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .nav button:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="beastling">
+        <img src="{{ url_for('static', filename='images/beastling' + player_beastling|string + '.png') }}" alt="Your Beastling">
+    </div>
+
+    <div class="nav">
+        <button>Бой</button>
+        <button>Инвентарь</button>
+        <button>Рынок</button>
+        <button>Профиль</button>
+    </div>
+</body>
+</html>

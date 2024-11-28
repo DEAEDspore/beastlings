@@ -21,6 +21,7 @@
             align-items: center;
             width: 100%;
             padding: 20px;
+            position: relative;
         }
 
         .beastling {
@@ -35,7 +36,9 @@
 
         .vs {
             max-width: 10%;
-            margin: 0 20px;
+            position: absolute;
+            top: 50%; /* Центрирование по высоте */
+            transform: translateY(-50%);
         }
 
         .controls {
@@ -56,6 +59,25 @@
 
         .controls button:hover {
             background-color: #e0e0e0;
+        }
+        #result-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            font-size: 2rem;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        #result-overlay.show {
+            display: flex;
         }
     </style>
 </head>
@@ -82,5 +104,39 @@
         <button id="scissors">Ножницы</button>
         <button id="paper">Бумага</button>
     </div>
+
+    <div id="result-overlay">
+        <p id="result-message"></p>
+        <button id="main-menu">В главное меню</button>
+    </div>
+
+    <script>
+        const playerBeastling = {{ player_beastling }};
+        const choices = ["Камень", "Ножницы", "Бумага"];
+        const botChoice = () => choices[Math.floor(Math.random() * 3)];
+        let playerWins = 0;
+
+        document.querySelectorAll('.controls button').forEach(button => {
+            button.addEventListener('click', () => {
+                const playerChoice = button.textContent;
+                const botMove = botChoice();
+
+                if ((playerChoice === "Камень" && botMove === "Ножницы") ||
+                    (playerChoice === "Ножницы" && botMove === "Бумага") ||
+                    (playerChoice === "Бумага" && botMove === "Камень")) {
+                    playerWins++;
+                }
+
+                if (playerWins === 3) {
+                    document.getElementById('result-message').textContent = "Победа!";
+                    document.getElementById('result-overlay').classList.add('show');
+                }
+            });
+        });
+
+        document.getElementById('main-menu').addEventListener('click', () => {
+            window.location.href = '/main_menu'; // Убедитесь, что маршрут /main_menu существует
+        });
+    </script>
 </body>
 </html>

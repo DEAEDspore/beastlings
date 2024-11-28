@@ -16,6 +16,10 @@ def battle():
     player_beastling = request.args.get('beastling', 1, type=int)
     return render_template("battle.html", player_beastling=player_beastling)
 
+@app.route("/main_menu")
+def main_menu():
+    return render_template("main_menu.html", player_beastling=player_beastling)
+
 if __name__ == "__main__":
     # Используем порт из переменной окружения
     port = int(os.environ.get("PORT", 5000))
