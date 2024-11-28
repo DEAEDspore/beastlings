@@ -1,0 +1,35 @@
+<!-- templates/battle.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battle</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="battle-container">
+        <div class="battle-row">
+            <div class="beastling">
+                <img src="{{ url_for('static', filename=f'images/beastling{player_beastling}.png') }}" alt="Your Beastling">
+                <p>Your Beastling</p>
+            </div>
+            <div class="beastling">
+                <img src="{{ url_for('static', filename='images/beastling_bot.png') }}" alt="Bot Beastling">
+                <p>Bot Beastling</p>
+            </div>
+        </div>
+        <div class="battle-controls">
+            <button onclick="makeMove('rock')">Rock</button>
+            <button onclick="makeMove('paper')">Paper</button>
+            <button onclick="makeMove('scissors')">Scissors</button>
+        </div>
+    </div>
+
+    <script>
+        function makeMove(choice) {
+            alert(`You chose ${choice}. Battle logic will be implemented here.`);
+        }
+    </script>
+</body>
+</html>

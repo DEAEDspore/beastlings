@@ -1,58 +1,44 @@
+<!-- templates/choose.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Choose Your Beastling</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: #f0f0f0;
-        }
-
-        h1 {
-            font-family: Arial, sans-serif;
-            margin-bottom: 20px;
-        }
-
-        .beastling-choice {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .beastling-choice img {
-            width: 150px;
-            height: 150px;
-            cursor: pointer;
-            border: 2px solid transparent;
-            border-radius: 10px;
-            transition: border-color 0.3s;
-        }
-
-        .beastling-choice img:hover {
-            border-color: #4caf50;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Choose Your Beastling</h1>
-    <div class="beastling-choice">
-        <img src="{{ url_for('static', filename='images/beastling1.png') }}" alt="Beastling 1" onclick="chooseBeastling(1)">
-        <img src="{{ url_for('static', filename='images/beastling2.png') }}" alt="Beastling 2" onclick="chooseBeastling(2)">
-        <img src="{{ url_for('static', filename='images/beastling3.png') }}" alt="Beastling 3" onclick="chooseBeastling(3)">
+    <div class="choose-container">
+        <h1>Choose Your Beastling</h1>
+        <div class="beastlings-row">
+            <div class="beastling" onclick="selectBeastling(1)">
+                <img src="{{ url_for('static', filename='images/beastling1.png') }}" alt="Beastling 1">
+                <p>Beastling 1</p>
+            </div>
+            <div class="beastling" onclick="selectBeastling(2)">
+                <img src="{{ url_for('static', filename='images/beastling2.png') }}" alt="Beastling 2">
+                <p>Beastling 2</p>
+            </div>
+            <div class="beastling" onclick="selectBeastling(3)">
+                <img src="{{ url_for('static', filename='images/beastling3.png') }}" alt="Beastling 3">
+                <p>Beastling 3</p>
+            </div>
+        </div>
+        <button id="start-battle" disabled onclick="startBattle()">Start Battle</button>
     </div>
 
     <script>
-        function chooseBeastling(beastlingId) {
-            alert(`You chose Beastling ${beastlingId}`);
-            // Здесь можно сделать POST-запрос на сервер или перейти на другой экран
+        let selectedBeastling = null;
+
+        function selectBeastling(id) {
+            selectedBeastling = id;
+            document.querySelectorAll('.beastling').forEach(el => el.classList.remove('selected'));
+            document.querySelector(`.beastling:nth-child(${id})`).classList.add('selected');
+            document.getElementById('start-battle').disabled = false;
+        }
+
+        function startBattle() {
+            window.location.href = `/battle?beastling=${selectedBeastling}`;
         }
     </script>
 </body>

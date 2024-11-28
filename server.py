@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -10,6 +10,11 @@ def loading():
 @app.route('/choose')
 def choose():
     return render_template('choose.html')  # Убедитесь, что choose.html существует в папке templates
+
+@app.route("/battle")
+def battle():
+    player_beastling = request.args.get('beastling', 1, type=int)
+    return render_template("battle.html", player_beastling=player_beastling)
 
 if __name__ == "__main__":
     # Используем порт из переменной окружения
