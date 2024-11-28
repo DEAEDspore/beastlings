@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Select Beastling</title>
+</head>
+<body>
+    <h1>Choose Your Beastling</h1>
+    <form action="/save_beastling" method="post">
+        {% for beastling in beastlings %}
+        <button type="submit" name="beastling" value="{{ beastling }}">
+            <img src="{{ url_for('static', filename='images/beastling' + str(beastling) + '.png') }}" alt="Beastling {{ beastling }}">
+        </button>
+        {% endfor %}
+    </form>
+</body>
+</html>
