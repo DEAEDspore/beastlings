@@ -4,12 +4,14 @@
     <title>Select Beastling</title>
 </head>
 <body>
-    <h1>Choose Your Beastling</h1>
+    <h1>Select Your Beastling</h1>
     <form action="/save_beastling" method="post">
         {% for beastling in beastlings %}
-        <button type="submit" name="beastling" value="{{ beastling }}">
-            <img src="{{ url_for('static', filename='images/beastling' + beastling + '.png') }}" alt="Beastling {{ beastling }}">
-        </button>
+        <div>
+            <img src="{{ url_for('static', filename='images/' + beastling.image) }}" alt="{{ beastling.name }}">
+            <p>{{ beastling.name }}</p>
+            <button type="submit" name="beastling" value="{{ beastling.id }}">Select</button>
+        </div>
         {% endfor %}
     </form>
 </body>

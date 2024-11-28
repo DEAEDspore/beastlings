@@ -2,23 +2,23 @@
 <html lang="en">
 <head>
     <title>Battle</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <div class="battle-container">
-        <div class="beastling player">
-            <img src="{{ url_for('static', filename='images/beastling' + player_beastling + '.png') }}" alt="Player Beastling">
-        </div>
-        <div class="vs">
-            <img src="{{ url_for('static', filename='images/vs.png') }}" alt="VS">
-        </div>
-        <div class="beastling bot">
-            <img src="{{ url_for('static', filename='images/beastling2.png') }}" alt="Bot Beastling">
-        </div>
+    <h1>Battle</h1>
+    <div>
+        <h2>Your Beastling</h2>
+        <img src="{{ url_for('static', filename='images/beastling' + player_beastling + '.png') }}" alt="Player">
+        <h3>Score: {{ player_score }}</h3>
     </div>
-    <form action="/battle_end" method="post">
-        <button type="submit" name="result" value="win">Win</button>
-        <button type="submit" name="result" value="lose">Lose</button>
+    <div>
+        <h2>Bot Beastling</h2>
+        <img src="{{ url_for('static', filename='images/beastling2.png') }}" alt="Bot">
+        <h3>Score: {{ bot_score }}</h3>
+    </div>
+    <form action="/play_turn" method="post">
+        <button type="submit" name="choice" value="rock">Rock</button>
+        <button type="submit" name="choice" value="paper">Paper</button>
+        <button type="submit" name="choice" value="scissors">Scissors</button>
     </form>
 </body>
 </html>

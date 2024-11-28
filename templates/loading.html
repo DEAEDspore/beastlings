@@ -6,25 +6,42 @@
         body {
             margin: 0;
             padding: 0;
-            background: url('{{ url_for("static", filename="images/loading_background.png") }}') no-repeat center center fixed;
-            background-size: cover;
-        }
-        .loading-text {
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             color: white;
-            font-size: 36px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            font-family: Arial, sans-serif;
+        }
+        .loading-bar {
+            width: 80%;
+            height: 30px;
+            background: grey;
+            position: relative;
+        }
+        .progress {
+            width: 0;
+            height: 100%;
+            background: green;
         }
     </style>
 </head>
 <body>
-    <div class="loading-text">Loading...</div>
+    <div class="loading-bar">
+        <div class="progress"></div>
+    </div>
     <script>
-        setTimeout(() => {
-            window.location.href = "/select_beastling";
-        }, 3000);
+        let progress = document.querySelector(".progress");
+        let width = 0;
+        let interval = setInterval(() => {
+            width += 1;
+            progress.style.width = width + "%";
+            if (width >= 100) {
+                clearInterval(interval);
+                window.location.href = "/select_beastling";
+            }
+        }, 30);
     </script>
 </body>
 </html>
