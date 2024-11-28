@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, random, redirect, url_for, session
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
@@ -74,4 +74,7 @@ def main_menu():
     return render_template("main_menu.html", player_beastling=player_beastling)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Настраиваем запуск на определённом хосте и порту
+    port = int(os.environ.get("PORT", 5000))  # Используем порт из переменной окружения, если указан
+    app.run(host="0.0.0.0", port=port, debug=True)
+
