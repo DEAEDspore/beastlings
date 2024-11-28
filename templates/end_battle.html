@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завершение боя</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="end-battle-screen">
+        <div class="result">
+            <h1>
+                {% if result == 'win' %}
+                    Победа!
+                {% else %}
+                    Поражение!
+                {% endif %}
+            </h1>
+            <p>Поздравляем с результатом боя!</p>
+            <a href="{{ url_for('main_menu', beastling=beastling) }}">Перейти в главное меню</a>
+        </div>
+    </div>
+</body>
+</html>

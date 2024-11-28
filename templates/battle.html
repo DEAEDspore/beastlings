@@ -1,24 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Battle</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бой</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h1>Battle</h1>
-    <div>
-        <h2>Your Beastling</h2>
-        <img src="{{ url_for('static', filename='images/beastling' + player_beastling + '.png') }}" alt="Player">
-        <h3>Score: {{ player_score }}</h3>
+    <div class="battle-screen">
+        <div class="battle-field">
+            <div class="player-beastling">
+                <img src="/static/images/{{ player_beastling }}.png" alt="Ваш бистлинг">
+                <p>Ваш бистлинг</p>
+            </div>
+            <div class="vs">
+                <img src="/static/images/vs.png" alt="VS">
+            </div>
+            <div class="bot-beastling">
+                <img src="/static/images/bot_beastling.png" alt="Бистлинг бота">
+                <p>Бистлинг бота</p>
+            </div>
+        </div>
+
+        <div class="battle-controls">
+            <p>Ваш выбор: {{ player_choice or 'Ничего не выбрано' }}</p>
+            <p>Выбор бота: {{ bot_choice or 'Ничего не выбрано' }}</p>
+            <div class="score">
+                <p>Ваш счёт: {{ player_score }}</p>
+                <p>Счёт бота: {{ bot_score }}</p>
+            </div>
+            <form method="POST">
+                <button name="choice" value="rock">Камень</button>
+                <button name="choice" value="paper">Бумага</button>
+                <button name="choice" value="scissors">Ножницы</button>
+            </form>
+        </div>
+        
+        {% if player_score == 3 or bot_score == 3 %}
+            <div class="result">
+                <p>
+                    {% if player_score == 3 %}
+                        Победа!
+                    {% else %}
+                        Поражение...
+                    {% endif %}
+                </p>
+                <a href="{{ url_for('main_menu', beastling=player_beastling) }}">Вернуться в главное меню</a>
+            </div>
+        {% endif %}
     </div>
-    <div>
-        <h2>Bot Beastling</h2>
-        <img src="{{ url_for('static', filename='images/beastling2.png') }}" alt="Bot">
-        <h3>Score: {{ bot_score }}</h3>
-    </div>
-    <form action="/play_turn" method="post">
-        <button type="submit" name="choice" value="rock">Rock</button>
-        <button type="submit" name="choice" value="paper">Paper</button>
-        <button type="submit" name="choice" value="scissors">Scissors</button>
-    </form>
 </body>
 </html>

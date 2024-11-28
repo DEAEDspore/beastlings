@@ -1,19 +1,105 @@
 body {
+    margin: 0;
+    padding: 0;
+    background: url('/static/images/main_menu_bg.png') no-repeat center center fixed;
+    background-size: cover;
     font-family: Arial, sans-serif;
-    text-align: center;
+    color: #fff;
 }
 
-.battle-container {
+h1, p {
+    color: white;
+}
+
+.main-menu {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.main-menu h1 {
+    font-size: 36px;
+}
+
+.main-menu .player-beastling img {
+    width: 200px;
+    height: 200px;
+}
+
+.main-menu .menu-buttons a {
+    display: block;
+    padding: 10px;
+    margin: 10px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.main-menu .menu-buttons a:hover {
+    background-color: #444;
+}
+
+.battle-screen {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.battle-screen .battle-field {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 20px 0;
+    margin-bottom: 30px;
 }
 
-.beastling img {
-    max-width: 150px;
+.battle-screen .battle-field img {
+    width: 150px;
+    height: 150px;
 }
 
-.vs img {
-    max-width: 100px;
+.battle-screen .vs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.battle-screen .battle-controls {
+    margin-top: 20px;
+}
+
+.battle-screen .battle-controls button {
+    padding: 15px;
+    font-size: 18px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.battle-screen .result {
+    margin-top: 30px;
+    font-size: 24px;
+    color: yellow;
+}
+
+.loading-screen img {
+    width: 100%;
+    height: auto;
+}
+
+.loading-bar {
+    margin-top: 20px;
+    height: 10px;
+    width: 80%;
+    background-color: #ddd;
+}
+
+.loading-bar .progress {
+    height: 100%;
+    width: 0;
+    background-color: #4caf50;
+    animation: loading 3s forwards;
+}
+
+@keyframes loading {
+    0% { width: 0; }
+    100% { width: 100%; }
 }

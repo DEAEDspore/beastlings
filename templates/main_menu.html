@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Main Menu</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главное меню</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h1>Main Menu</h1>
-    <h2>Last Battle: {{ last_battle_result }}</h2>
-    <div>
-        <img src="{{ url_for('static', filename='images/beastling' + player_beastling + '.png') }}" alt="Your Beastling">
+    <div class="main-menu">
+        <h1>Главное меню</h1>
+        <div class="player-beastling">
+            <img src="/static/images/{{ player_beastling }}.png" alt="Ваш бистлинг">
+            <p>Ваш бистлинг</p>
+        </div>
+        <div class="menu-buttons">
+            <a href="{{ url_for('battle', beastling=player_beastling) }}">Бой</a>
+            <a href="{{ url_for('inventory') }}">Инвентарь</a>
+            <a href="{{ url_for('market') }}">Рынок</a>
+            <a href="{{ url_for('profile') }}">Профиль</a>
+        </div>
     </div>
-    <nav>
-        <a href="/battle">Battle</a>
-        <a href="#">Inventory</a>
-        <a href="#">Market</a>
-        <a href="#">Profile</a>
-    </nav>
 </body>
 </html>
