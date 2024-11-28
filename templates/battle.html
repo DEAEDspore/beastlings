@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+<<<<<<< HEAD
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Бой</title>
@@ -49,5 +50,35 @@
             </div>
         {% endif %}
     </div>
+=======
+    <title>Battle</title>
+</head>
+<body>
+    <h1>Бой</h1>
+    <div>
+        <img src="/static/{{ player_beastling.image }}" alt="Player Beastling">
+        <img src="/static/images/vs.png" alt="VS">
+        <img src="/static/images/beastling_bot.png" alt="Bot Beastling">
+    </div>
+    <form id="battle-form">
+        <button type="button" onclick="sendChoice('rock')">Камень</button>
+        <button type="button" onclick="sendChoice('scissors')">Ножницы</button>
+        <button type="button" onclick="sendChoice('paper')">Бумага</button>
+    </form>
+    <div id="log"></div>
+    <script>
+        function sendChoice(choice) {
+            fetch('/battle', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ choice })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('log').innerText = `Результат: ${data.result}`;
+            });
+        }
+    </script>
+>>>>>>> a32f40c (pererabotka)
 </body>
 </html>

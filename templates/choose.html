@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+<<<<<<< HEAD
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Выбор Бистлинга</title>
@@ -24,5 +25,18 @@
             <button type="submit">Подтвердить выбор</button>
         </form>
     </div>
+=======
+    <title>Choose Beastling</title>
+</head>
+<body>
+    <h1>Выберите своего бистлинга</h1>
+    <form action="/choose" method="POST">
+        {% for beastling in beastlings %}
+        <button type="submit" name="beastling" value="{{ loop.index0 }}">
+            <img src="/static/{{ beastling.image }}" alt="{{ beastling.name }}">
+        </button>
+        {% endfor %}
+    </form>
+>>>>>>> a32f40c (pererabotka)
 </body>
 </html>

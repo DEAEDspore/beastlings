@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     margin: 0;
     padding: 0;
@@ -82,11 +83,32 @@ h1, p {
 
 .loading-screen img {
     width: 100%;
+=======
+/* Стиль для загрузочной страницы */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f0f0f0;
+    overflow: hidden;
+}
+
+.loading-container {
+    text-align: center;
+}
+
+.loading-image {
+    width: 300px;
+>>>>>>> a32f40c (pererabotka)
     height: auto;
 }
 
 .loading-bar {
     margin-top: 20px;
+<<<<<<< HEAD
     height: 10px;
     width: 80%;
     background-color: #ddd;
@@ -102,4 +124,19 @@ h1, p {
 @keyframes loading {
     0% { width: 0; }
     100% { width: 100%; }
+=======
+    width: 100%;
+    background: #e0e0e0;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0;
+    height: 100%;
+    background: #4caf50;
+    border-radius: 10px;
+    transition: width 0.1s;
+>>>>>>> a32f40c (pererabotka)
 }
